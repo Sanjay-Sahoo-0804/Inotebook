@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-const mongoURI = "mongodb+srv://anith:anith123@cluster0.jrhtr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoURI = process.env.MONGO_URI;
 
 const connectToMongo = () => {
     try {
-         mongoose.connect(mongoURI, {
-        });
+        mongoose.connect(mongoURI, {});
         console.log("✅ Connected to MongoDB Successfully");
     } catch (error) {
         console.error("❌ MongoDB Connection Error:", error.message);
-        process.exit(1); // Exit process if MongoDB connection fails
+        process.exit(1);
     }
 };
 
